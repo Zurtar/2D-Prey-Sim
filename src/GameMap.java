@@ -2,18 +2,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameMap {
-    private int height, width;
-    private char[][] map;
+    private static int height;
+    private static int width;
+    public static char[][] map;
 
-    private ArrayList<Ant> antList;
-
-    public GameMap(int height, int width, ArrayList<Ant> antList) {
+    public GameMap(int height, int width) {
         this.height = height;
         this.width = width;
 
-        this.antList = antList; // is this duping it in memory?
-
         map = new char[height][width];
+
+        //Build map on creation of object
+        this.buildMap();
     }
 
     @Override
@@ -31,12 +31,28 @@ public class GameMap {
             Arrays.fill(row, '*');
         }
 
-        for (Organism ant : antList) {
+        for (Organism ant : Ant.getAntArrayList()) {
             int xPos = ant.getPosition()[0];
             int yPos = ant.getPosition()[1];
 
-            map[yPos][xPos] = 'X';
+            map[yPos][xPos] = 'o';
         }
 
+    }
+
+    public static void changeMap(int x, int y, char c) {
+        map[y][x] = c;
+    }
+
+    public static char[][] getMap() {
+        return map;
+    }
+
+    public static int getHeight() {
+        return height;
+    }
+
+    public static int getWidth() {
+        return width;
     }
 }

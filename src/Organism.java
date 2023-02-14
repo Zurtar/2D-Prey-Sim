@@ -47,7 +47,7 @@ public abstract class Organism {
 
     protected void setMoved(boolean hasMoved) {
         moved = hasMoved;
-    }
+    } //This is not needed?
 
 
     /**

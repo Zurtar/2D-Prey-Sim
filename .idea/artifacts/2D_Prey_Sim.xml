@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="2D-Prey-Sim">
+    <output-path>$PROJECT_DIR$/out/artifacts/2D_Prey_Sim</output-path>
+    <root id="archive" name="2D-Prey-Sim.jar">
+      <element id="module-output" name="A3Q2" />
+    </root>
+  </artifact>
+</component>
