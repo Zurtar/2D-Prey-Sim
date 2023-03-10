@@ -1,8 +1,14 @@
+import java.util.ArrayList;
+
 public abstract class Organism {
-    private int[] position = {-1, -1};
+    private Position position;
     private int age;
-    private boolean moved = false;
-    private boolean alive = true;
+    private boolean alive;
+
+    public Organism() {
+        position = new Position();
+        alive = true;
+    }
 
     /**
      * Non-Abstract Methods
@@ -22,39 +28,34 @@ public abstract class Organism {
         return age;
     }
 
-    protected int[] getPosition() {
-        return position;
+    protected Position getPosition() {
+        return position.copy();
     }
 
     protected boolean isAlive() {
         return alive;
     }
 
-    protected boolean hasMoved() {
-        return moved;
-    }
-
     /**
      * Setter Methods
      **/
-    protected void setPosition(int[] position) {
-        this.position = position;
+    protected void setPosition(Position p) {
+        this.position = new Position(p);
     }
 
-    protected void setAge(int age) {
-        this.age = age;
+    protected void resetAge() {
+        this.age = 0;
     }
-
-    protected void setMoved(boolean hasMoved) {
-        moved = hasMoved;
-    } //This is not needed?
-
 
     /**
      * Abstract Methods to Override
      **/
-    protected abstract void move();
+    protected abstract void move(Position p);
 
     protected abstract Organism breed(); //Unsure if it should return the new object or not… hm
 
+    protected abstract Organism copy();
 }
+
+
+
